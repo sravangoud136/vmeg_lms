@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>vardhaman.org/LMS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+
+<style>
+.form1{
+  margin:60px;
+max-width:450px;
+background-color:#ffffff;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+input[type=text],[type=password],[type=submit]{
+width:80%;
+padding:10px;
+font-size:15px;
+border-width: 0px 0px 2px 0px;
+}
+input:focus{
+  outline:none;
+}
+.dark{
+  background-color: #2d5bb7;
+  color:#ffffff;
+
+}
+#register{
+  background-color: #2d5bb7;
+  color:#ffffff;
+  border-radius: 5px;
+}
+body{
+  background-color: #f4f4f4;
+}
+input[type=radio]{
+  display: inline;
+}
+</style>
+</head>
+<body>
+ <script type="text/javascript">
+    function validate(){
+      var msg="";
+      var p1=document.getElementById('pwd').value;
+      var p2=document.getElementById('pwd2').value;
+
+      var role=document.getElementsByName("type");
+      if(role[0].checked==true)
+          msg="Staff";
+      else if( role[1].checked==true)
+         msg="Student";
+      else if(p1!=p2)
+      {
+         msg='Password did not match';
+         document.getElementById('errmsg').innerHTML=msg;
+         return false;
+      }
+
+     else
+     {
+         msg='Role must be Selected';
+         document.getElementById('errmsg').innerHTML=msg;
+         return false;
+    }
+    return true;
+  }
+  function clean()
+  {
+     document.getElementById('errmsg').innerHTML=" ";
+     return false;
+  }
+  </script>
+
+<center>
+<div class="form1">
+ <div class="dark">
+  <br>
+  <h3>Sign Up</h3>
+  <br>
+</div>
+<br>
+<form action="reg.php"  method="post"  enctype="multipart/form-data" onsubmit=" return validate()">
+  
+    <input type="text" placeholder="Enter Rollno" name="id" required><br><br>
+    <input type="text" placeholder="Enter UserName" name="fname" required><br><br>
+
+    
+    <input type="password" placeholder="Enter Password" name="pwd1" id='pwd' required><br><br>
+
+    
+    <input type="password" placeholder="Repeat Password" name="psw-repeat"  id='pwd2'required><br><br>
+
+    
+    Role:<br>
+
+    <input type="radio" name="type" value="Faculty" id='role'>Staff<br>&nbsp&nbsp&nbsp
+    <input type="radio" name="type" value="student" id='role' >Student<br><br>
+
+    <input type="file" name="image"><br><br>
+
+   
+
+   
+      
+      <input type="submit"  value="Register" id="register">
+  </form>
+  <p id="errmsg" style="color:red"></p>
+<br>
+<br>
+</div>
+</center>
+</body>
+</html>
+

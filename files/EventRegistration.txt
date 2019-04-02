@@ -1,0 +1,158 @@
+<html>
+<head>
+<title>Event Registration</title>
+<script type="text/javascript" scr="index.js"></script>
+</head>
+<body>
+<table id="eventForm" style="border: 1px solid black;width:80%;text-align:center;background-color:#ef45e0">
+			<tr>
+				<td colspan="2">
+					<h1>Event Management System</h1>
+						<hr>
+				</td>
+			</tr>
+			<div id="createDiv" style="display: block;">
+				<form action="#" id="createEvent" onsubmit="validateCreation();">
+					<tr>
+						<td colspan="2">
+							<h2>Event Creation Form</h2>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="eventId">Event Id</label>
+						</td>
+						<td>
+							<input type="number" id="eventId">
+							<span id="err1"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="department">Department</label>
+						</td>
+						<td>
+							<select id="department">
+								<option value="Admin">Admin</option>
+								<option value="HR">HR</option>
+									<option value="Finance">Finance</option>
+									<option value="Network">Network</option>
+							</select>
+							<span id="err2"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="status">Status</label>
+						</td>
+						<td>
+							<select id="status">
+								<option	value="Open">Open</option>
+								<option value="In Progress">In Progress</option>
+								<option value="Rejected">Rejected</option>
+								<option value="Complete">Complete</option>
+							</select>
+							<span id="err3"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="description">Description</label>
+						</td>
+						<td>
+							<input type="text" id="description">
+							<span id="err4"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="raisedBy">Raised By</label>	
+						</td>
+						<td>
+							<input type="text" id="raisedBy">
+							<span id="err5"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="contactPhone">Contact Phone</label>
+						</td>
+						<td>
+							<input type="text" id="contactPhone">
+							<span id="err6"></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input id="create" type="submit" value="Create"><input id="cancel" type="reset" value="Cancel">
+						</td>		
+					</tr>
+				</form>
+			</div>
+			<div id="resultDiv" style="display:none;">
+				<p>An event is created with id = <span id="eid"></span></p>
+				<p>Department :<span id="dep"></span></p>
+				<p>Status :<span id="sta"></span></p>
+				<p>Raised By :<span id="rai"></span></p>
+				<button id="close" value="Close" onclick="show()">Close</button>
+			</div>
+		</table>
+		
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+function validateCreation() {
+	var err = false;
+	if(document.getElementById('eventId').value =="") {
+		document.getElementById('err1').innerText="This field is required";
+		err=true;
+	}
+	if(document.getElementById('department').value =="") {
+		document.getElementById('err2').innerText="This field is required";
+		err=true;
+	}
+	if(document.getElementById('status').value =="") {
+		document.getElementById('err3').innerText="This field is required";
+		err=true;
+	}
+	if(document.getElementById('description').value =="") {
+		document.getElementById('err4').innerText="This field is required";
+		err=true;
+	}
+	if(document.getElementById('raisedBy').value =="") {
+		document.getElementById('err5').innerText="This field is required";
+		err=true;
+	}
+	if(document.getElementById('contactPhone').value =="") {
+		document.getElementById('err6').innerText="This field is required";
+		err=true;
+	}
+	if(!err) {
+		document.getElementById('createDiv').style.display = "none";
+		document.getElementById('resultDiv').style.display = "block";
+		document.getElementById('eid').innerText = document.getElementById('eventId').value;
+		document.getElementById('dep').innerText = document.getElementById('department').value;
+		document.getElementById('sta').innerText = document.getElementById('status').value;
+		document.getElementById('rai').innerText = document.getElementById('raisedBy').value;
+	}
+}
+function show() {
+	document.getElementById('createDiv').style.display = "block";
+	document.getElementById('resultDiv').style.display = "none";
+}
+
+
+
+
+
+
+

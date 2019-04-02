@@ -1,0 +1,86 @@
+<html>
+<head>
+<style>
+.form1{
+	margin:80px;
+max-width:320px;
+background-color:#ffffff;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+input[type=text],[type=password],[type=submit]{
+width:80%;
+padding:10px;
+font-size:15px;
+border-width: 0px 0px 2px 0px;
+}
+input:focus{
+	outline:none;
+}
+.dark{
+	background-color: #2d5bb7;
+	color:#ffffff;
+
+}
+#login{
+	background-color: #2d5bb7;
+	color:#ffffff;
+	border-radius: 5px;
+}
+body{
+	background-color: #f4f4f4;
+}
+input[type=radio]{
+	display: inline;
+}
+</style>
+<script type="text/javascript">
+    function validate(){
+      var msg="";
+      var role=document.getElementsByName("type");
+      if(role[0].checked==true)
+          msg="Staff";
+      else if( role[1].checked==true)
+         msg="Student";
+     else
+     {
+         msg='Role must be Selected';
+         document.getElementById('errmsg').innerHTML=msg;
+         return false;
+    }
+    return true;
+  }
+  function clean()
+  {
+  	 document.getElementById('errmsg').innerHTML=" ";
+  	 return false;
+  }
+  </script>
+</head>
+<body>
+<center>
+<div class="form1">
+ <div class="dark">
+  <br>
+  <h3>Student/Faculty Login</h3>
+  <br>
+</div>
+<br>
+<form name="signin" method="post" action="log.php" onsubmit="return  validate()">
+<input type="text" placeholder="Roll No" name="id" onmouseenter="return clean()" required ><br><br>
+<input type="password" placeholder="Password" name="pwd"  onmouseenter="return clean()" required><br><br>
+<div class="radio">
+<input type="radio" name="type" value="Faculty">Staff&nbsp
+<input type="radio" name="type" value="student">Student
+</div><br>
+<input type="submit" value="LOGIN" id="login" name="login">
+</form>
+ <p id="errmsg" style="color:red"></p>
+
+<br>
+<br>
+</div>
+</center>
+</body>
+</html>
+
